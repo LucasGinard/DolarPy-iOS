@@ -1,0 +1,26 @@
+//
+//  QuotationModel.swift
+//  DolarPy
+//
+//  Created by MacBook Pro on 2023-01-21.
+//
+
+import Foundation
+
+struct QuotationResponse: Codable {
+    var dolarpy: [String: QuotationModel]
+    let updated: String
+    
+    func loadNamesQuotation(){
+        for x in self.dolarpy.indices{
+            self.dolarpy[x].value.name = self.dolarpy[x].key
+        }
+    }
+}
+
+class QuotationModel: Codable {
+    var name: String?
+    let compra: Double
+    let venta: Double
+    let referencial_diario: Double?
+}
