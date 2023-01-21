@@ -8,22 +8,33 @@
 import SwiftUI
 
 struct QuotationRowView: View {
+    var quotation:QuotationModel
+    
     var body: some View {
         VStack(alignment: .leading){
             VStack{
                 HStack{
-                    Text("Compra")
+                    Text("Compra:")
                     Spacer()
-                    Text("51000")
+                    Text(String(quotation.compra))
                 }.padding(8)
                 HStack{
-                    Text("Venta")
+                    Text("Venta:")
                     Spacer()
-                    Text("51000")
+                    Text(String(quotation.venta))
                 }.padding(8)
+                if let refDaily = quotation.referencial_diario {
+                    HStack{
+                        Text("Ref Día:")
+                        Spacer()
+                        Text(String(refDaily))
+                    }.padding(8)
+                }
             }
-            Text("cambios chaquito").foregroundColor(.green)
-                .background(Color.white)
+            if let name = quotation.name {
+                Text(name).foregroundColor(.green)
+                    .background(Color.white)
+            }
         }.background(Color.green)
             .frame(width: 160)
     }
@@ -31,6 +42,6 @@ struct QuotationRowView: View {
 
 struct QuotationRowView_Previews: PreviewProvider {
     static var previews: some View {
-        QuotationRowView()
+        QuotationRowView(quotation: QuotationModel(name: "Cambios dolar", compra: 5500, venta: 600, ref: 1000))
     }
 }

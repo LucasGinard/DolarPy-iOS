@@ -95,6 +95,7 @@
 		520FA5D2297B5DA400065C58 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				523F8D0C297CA8700054C35D /* utils */,
 				520FA5D3297B5DAB00065C58 /* home */,
 			);
 			path = modules;
@@ -124,6 +125,13 @@
 				520FA5D8297B61C900065C58 /* QuotationRowView.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		523F8D0C297CA8700054C35D /* utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		524286412964B67000327394 = {

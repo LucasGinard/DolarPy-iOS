@@ -23,4 +23,11 @@ class QuotationModel: Codable {
     let compra: Double
     let venta: Double
     let referencial_diario: Double?
+    
+    init(name:String,compra:Double,venta:Double,ref:Double?){
+        self.name = name
+        self.compra = compra
+        self.venta = venta
+        self.referencial_diario = ref
+    }
 }
