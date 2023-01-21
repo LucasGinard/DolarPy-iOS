@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var joke: String = ""
+    @State private var quotations = Array<QuotationModel>()
 
     var body: some View {
         VStack(alignment: .center) {
@@ -17,13 +17,17 @@ struct HomeView: View {
                         Task {
                             let (data, _) = try await URLSession.shared.data(from: URL(string:"https://dolar.melizeche.com/api/1.0/")!)
 
-                            let decodedResponse = try? JSONDecoder().decode(Joke.self, from: data)
+                            let decodedResponse = try? JSONDecoder().decode(QuotationResponse.self, from: data)
+                            decodedResponse?.loadNamesQuotation()
+                            print("response return -> \(decodedResponse?.dolarpy)")
+                            decodedResponse?.dolarpy.values.forEach{
+                                self.quotations.append($0)
+                            }
                         }
                     } label: {
                         Text("Fetch Joke")
                     }
-            let data = (1...100).map { "Item \($0)" }
-
+            
                 let columns = [
                     GridItem(.fixed(160)),
                     GridItem(.flexible()),
@@ -31,8 +35,8 @@ struct HomeView: View {
 
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(data, id: \.self) { item in
-                        QuotationRowView()
+                    ForEach(quotations.indices, id: \.self) { item in
+                        QuotationRowView(quotation: self.quotations[item])
                     }
                 }
                 .padding(.horizontal)
@@ -49,12 +53,4 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
-}
-
-struct Joke: Codable {
-    let dolarpy: [String: Item]
-}
-struct Item: Codable {
-    let compra: Double
-    let venta: Double
 }
