@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520FA5D7297B60C800065C58 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FA5D6297B60C800065C58 /* HomeView.swift */; };
+		520FA5D9297B61C900065C58 /* QuotationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FA5D8297B61C900065C58 /* QuotationRowView.swift */; };
 		5242864E2964B67100327394 /* DolarPyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242864D2964B67100327394 /* DolarPyApp.swift */; };
 		524286502964B67100327394 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242864F2964B67100327394 /* ContentView.swift */; };
 		524286522964B67200327394 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524286512964B67200327394 /* Assets.xcassets */; };
@@ -41,15 +43,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5242864A2964B67100327394 /* DolarPy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = DolarPy.app; path = "/Users/macbookpro/Documents/projects/iOS/DolarPy-iOS/DolarPy/build/Debug/DolarPy.app"; sourceTree = "<absolute>"; };
+		520FA5CF297B583900065C58 /* DolarPy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DolarPy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		520FA5D0297B583900065C58 /* DolarPyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DolarPyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		520FA5D1297B583900065C58 /* DolarPyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DolarPyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		520FA5D6297B60C800065C58 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		520FA5D8297B61C900065C58 /* QuotationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationRowView.swift; sourceTree = "<group>"; };
 		5242864D2964B67100327394 /* DolarPyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyApp.swift; sourceTree = "<group>"; };
 		5242864F2964B67100327394 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		524286512964B67200327394 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		524286532964B67200327394 /* DolarPy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DolarPy.entitlements; sourceTree = "<group>"; };
 		524286552964B67200327394 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5242865B2964B67300327394 /* DolarPyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = DolarPyTests.xctest; path = "/Users/macbookpro/Documents/projects/iOS/DolarPy-iOS/DolarPy/build/Debug/DolarPyTests.xctest"; sourceTree = "<absolute>"; };
 		5242865F2964B67300327394 /* DolarPyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyTests.swift; sourceTree = "<group>"; };
-		524286652964B67300327394 /* DolarPyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = DolarPyUITests.xctest; path = "/Users/macbookpro/Documents/projects/iOS/DolarPy-iOS/DolarPy/build/Debug/DolarPyUITests.xctest"; sourceTree = "<absolute>"; };
 		524286692964B67300327394 /* DolarPyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyUITests.swift; sourceTree = "<group>"; };
 		5242866B2964B67300327394 /* DolarPyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		52DA7BDE2967480200D85ABF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -86,18 +90,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		520FA5D2297B5DA400065C58 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				520FA5D3297B5DAB00065C58 /* home */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		520FA5D3297B5DAB00065C58 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				520FA5D5297B603000065C58 /* view */,
+				520FA5D4297B601E00065C58 /* model */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		520FA5D4297B601E00065C58 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		520FA5D5297B603000065C58 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				520FA5D6297B60C800065C58 /* HomeView.swift */,
+				520FA5D8297B61C900065C58 /* QuotationRowView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		524286412964B67000327394 = {
 			isa = PBXGroup;
 			children = (
 				5242864C2964B67100327394 /* DolarPy */,
 				5242865E2964B67300327394 /* DolarPyTests */,
 				524286682964B67300327394 /* DolarPyUITests */,
+				520FA5CF297B583900065C58 /* DolarPy.app */,
+				520FA5D0297B583900065C58 /* DolarPyTests.xctest */,
+				520FA5D1297B583900065C58 /* DolarPyUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
 		5242864C2964B67100327394 /* DolarPy */ = {
 			isa = PBXGroup;
 			children = (
+				520FA5D2297B5DA400065C58 /* modules */,
 				52DA7BDE2967480200D85ABF /* GoogleService-Info.plist */,
 				5242864D2964B67100327394 /* DolarPyApp.swift */,
 				5242864F2964B67100327394 /* ContentView.swift */,
@@ -158,7 +199,7 @@
 				52DA7BE92967495D00D85ABF /* FirebaseCrashlytics */,
 			);
 			productName = DolarPy;
-			productReference = 5242864A2964B67100327394 /* DolarPy.app */;
+			productReference = 520FA5CF297B583900065C58 /* DolarPy.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5242865A2964B67300327394 /* DolarPyTests */ = {
@@ -176,7 +217,7 @@
 			);
 			name = DolarPyTests;
 			productName = DolarPyTests;
-			productReference = 5242865B2964B67300327394 /* DolarPyTests.xctest */;
+			productReference = 520FA5D0297B583900065C58 /* DolarPyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		524286642964B67300327394 /* DolarPyUITests */ = {
@@ -194,7 +235,7 @@
 			);
 			name = DolarPyUITests;
 			productName = DolarPyUITests;
-			productReference = 524286652964B67300327394 /* DolarPyUITests.xctest */;
+			productReference = 520FA5D1297B583900065C58 /* DolarPyUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -276,6 +317,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				52DA7BEC29674CF600D85ABF /* AppDelegate.swift in Sources */,
+				520FA5D9297B61C900065C58 /* QuotationRowView.swift in Sources */,
+				520FA5D7297B60C800065C58 /* HomeView.swift in Sources */,
 				524286502964B67100327394 /* ContentView.swift in Sources */,
 				5242864E2964B67100327394 /* DolarPyApp.swift in Sources */,
 			);
