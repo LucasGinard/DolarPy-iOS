@@ -13,11 +13,18 @@ struct QuotationRowView: View {
     var body: some View {
         VStack(alignment: .leading){
             VStack{
+                if quotation.referencial_diario == nil{
+                    Spacer()
+                }
                 HStack{
                     Text("Compra:")
                     Spacer()
                     Text(String(quotation.compra))
                 }.padding(8)
+                
+                if quotation.referencial_diario == nil{
+                    Spacer()
+                }
                 HStack{
                     Text("Venta:")
                     Spacer()
@@ -36,12 +43,12 @@ struct QuotationRowView: View {
                     .background(Color.white)
             }
         }.background(Color.green)
-            .frame(width: 160)
+            .frame(width: 160,height: 150)
     }
 }
 
 struct QuotationRowView_Previews: PreviewProvider {
     static var previews: some View {
-        QuotationRowView(quotation: QuotationModel(name: "Cambios dolar", compra: 5500, venta: 600, ref: 1000))
+        QuotationRowView(quotation: QuotationModel(name: "Cambios dolar", compra: 5500, venta: 600, ref: nil))
     }
 }
