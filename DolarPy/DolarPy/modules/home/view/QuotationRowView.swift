@@ -56,7 +56,7 @@ struct QuotationRowView: View {
                         .frame(maxWidth: .infinity,alignment: .leading).padding(8)
                 }
             }.background(Color.white)
-        }.frame(width: 160,height: 150)
+        }.frame(width: 160,height: 170)
             .background(Rectangle().fill(Color(Colors.green_46B6AC)).shadow(radius: 8))
 
     }
