@@ -16,34 +16,49 @@ struct QuotationRowView: View {
                 if quotation.referencial_diario == nil{
                     Spacer()
                 }
+                
                 HStack{
                     Text("Compra:")
+                        .foregroundColor(.white)
                     Spacer()
                     Text(String(quotation.compra))
+                        .foregroundColor(.white)
                 }.padding(8)
                 
                 if quotation.referencial_diario == nil{
                     Spacer()
                 }
+                
                 HStack{
                     Text("Venta:")
+                        .foregroundColor(.white)
                     Spacer()
                     Text(String(quotation.venta))
+                        .foregroundColor(.white)
                 }.padding(8)
+                
+                if quotation.referencial_diario == nil{
+                    Spacer()
+                }
+                
                 if let refDaily = quotation.referencial_diario {
                     HStack{
                         Text("Ref Día:")
+                            .foregroundColor(.white)
                         Spacer()
-                        Text(String(refDaily))
+                        Text(String(refDaily)).foregroundColor(.white)
                     }.padding(8)
                 }
             }
-            if let name = quotation.name {
-                Text(name).foregroundColor(.green)
-                    .background(Color.white)
-            }
-        }.background(Color.green)
-            .frame(width: 160,height: 150)
+            VStack{
+                if let name = quotation.name {
+                    Text(name).foregroundColor(Color(Colors.green_46B6AC))
+                        .frame(maxWidth: .infinity,alignment: .leading).padding(8)
+                }
+            }.background(Color.white)
+        }.frame(width: 160,height: 150)
+            .background(Rectangle().fill(Color(Colors.green_46B6AC)).shadow(radius: 8))
+
     }
 }
 

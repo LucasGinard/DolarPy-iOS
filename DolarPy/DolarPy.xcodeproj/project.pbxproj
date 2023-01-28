@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		520FA5D7297B60C800065C58 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FA5D6297B60C800065C58 /* HomeView.swift */; };
 		520FA5D9297B61C900065C58 /* QuotationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FA5D8297B61C900065C58 /* QuotationRowView.swift */; };
+		5213EEA92985CB3700E2D398 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5213EEA82985CB3700E2D398 /* Colors.swift */; };
 		523F8D0B297C969E0054C35D /* QuotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F8D0A297C969E0054C35D /* QuotationModel.swift */; };
 		5242864E2964B67100327394 /* DolarPyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242864D2964B67100327394 /* DolarPyApp.swift */; };
 		524286502964B67100327394 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242864F2964B67100327394 /* ContentView.swift */; };
@@ -17,6 +18,7 @@
 		524286602964B67300327394 /* DolarPyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242865F2964B67300327394 /* DolarPyTests.swift */; };
 		5242866A2964B67300327394 /* DolarPyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524286692964B67300327394 /* DolarPyUITests.swift */; };
 		5242866C2964B67300327394 /* DolarPyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242866B2964B67300327394 /* DolarPyUITestsLaunchTests.swift */; };
+		52672E85297DC8FC003DBA32 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52672E84297DC8FC003DBA32 /* Extensions.swift */; };
 		52DA7BDF2967480200D85ABF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DA7BDE2967480200D85ABF /* GoogleService-Info.plist */; };
 		52DA7BE22967495D00D85ABF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 52DA7BE12967495D00D85ABF /* FirebaseAnalytics */; };
 		52DA7BE42967495D00D85ABF /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 52DA7BE32967495D00D85ABF /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -49,6 +51,7 @@
 		520FA5D1297B583900065C58 /* DolarPyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DolarPyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		520FA5D6297B60C800065C58 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		520FA5D8297B61C900065C58 /* QuotationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationRowView.swift; sourceTree = "<group>"; };
+		5213EEA82985CB3700E2D398 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		523F8D0A297C969E0054C35D /* QuotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationModel.swift; sourceTree = "<group>"; };
 		5242864D2964B67100327394 /* DolarPyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyApp.swift; sourceTree = "<group>"; };
 		5242864F2964B67100327394 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 		5242865F2964B67300327394 /* DolarPyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyTests.swift; sourceTree = "<group>"; };
 		524286692964B67300327394 /* DolarPyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyUITests.swift; sourceTree = "<group>"; };
 		5242866B2964B67300327394 /* DolarPyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		52672E84297DC8FC003DBA32 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		52DA7BDE2967480200D85ABF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52DA7BEB29674CF600D85ABF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +134,8 @@
 		523F8D0C297CA8700054C35D /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				52672E84297DC8FC003DBA32 /* Extensions.swift */,
+				5213EEA82985CB3700E2D398 /* Colors.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -328,11 +334,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				52DA7BEC29674CF600D85ABF /* AppDelegate.swift in Sources */,
+				5213EEA92985CB3700E2D398 /* Colors.swift in Sources */,
 				520FA5D9297B61C900065C58 /* QuotationRowView.swift in Sources */,
 				520FA5D7297B60C800065C58 /* HomeView.swift in Sources */,
 				524286502964B67100327394 /* ContentView.swift in Sources */,
 				523F8D0B297C969E0054C35D /* QuotationModel.swift in Sources */,
 				5242864E2964B67100327394 /* DolarPyApp.swift in Sources */,
+				52672E85297DC8FC003DBA32 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
