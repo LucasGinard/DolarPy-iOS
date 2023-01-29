@@ -10,10 +10,13 @@ import UIKit
 
 extension Double{
     
-    func formatDecimal(){
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        guard let number =  numberFormatter.string(from: NSNumber(value: self)) else { fatalError("Can not get number") }
+    func formatDecimal() -> String{
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 3
+        formatter.minimumFractionDigits = 0
+        formatter.currencyCode = "PYG"
+        formatter.numberStyle = .decimal
+        return formatter.string(for: self) ?? "?"
     }
     
 }

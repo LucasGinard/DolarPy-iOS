@@ -21,7 +21,7 @@ struct QuotationRowView: View {
                     Text("Compra:")
                         .foregroundColor(.white)
                     Spacer()
-                    Text(String(quotation.compra))
+                    Text(String(quotation.compra.formatDecimal()))
                         .foregroundColor(.white)
                 }.padding(8)
                 
@@ -33,7 +33,7 @@ struct QuotationRowView: View {
                     Text("Venta:")
                         .foregroundColor(.white)
                     Spacer()
-                    Text(String(quotation.venta))
+                    Text(String(quotation.venta.formatDecimal()))
                         .foregroundColor(.white)
                 }.padding(8)
                 
@@ -46,7 +46,9 @@ struct QuotationRowView: View {
                         Text("Ref Día:")
                             .foregroundColor(.white)
                         Spacer()
-                        Text(String(refDaily)).foregroundColor(.white)
+                        Text(String(refDaily)
+                        )
+                        .foregroundColor(.white)
                     }.padding(8)
                 }
             }
