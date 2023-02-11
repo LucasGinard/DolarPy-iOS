@@ -9,10 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var quotations = Array<QuotationModel>()
-
+    @State var amountInput: String = ""
+    @State var lastUpdate: String = ""
+    
     var body: some View {
         VStack(alignment: .center) {
-            Text("💸 DolarPy 💸").padding().padding()
+            Text("💸 DolarPy 💸").padding()
+            TextField("Monto", text: $amountInput).textFieldStyle(.roundedBorder).padding()
                 let columns = [
                     GridItem(.fixed(160)),
                     GridItem(.flexible()),
@@ -32,6 +35,7 @@ struct HomeView: View {
                         let decodedResponse = try? JSONDecoder().decode(QuotationResponse.self, from: data)
                         decodedResponse?.loadNamesQuotation()
                         print("response return -> \(decodedResponse?.dolarpy)")
+                        lastUpdate = decodedResponse?.updated ?? ""
                         decodedResponse?.dolarpy.values.forEach{
                             self.quotations.append($0)
                         }
@@ -39,9 +43,8 @@ struct HomeView: View {
                         print("Error service")
                     }
                 }
+                Text("Actualizado: \(lastUpdate)").padding()
             }
-            
-            
         }
         .padding()
         

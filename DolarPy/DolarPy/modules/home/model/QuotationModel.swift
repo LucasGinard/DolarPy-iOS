@@ -20,9 +20,9 @@ struct QuotationResponse: Codable {
 
 class QuotationModel: Codable {
     var name: String?
-    let compra: Double
-    let venta: Double
-    let referencial_diario: Double?
+    var compra: Double
+    var venta: Double
+    var referencial_diario: Double?
     
     init(name:String,compra:Double,venta:Double,ref:Double?){
         self.name = name
