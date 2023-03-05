@@ -9,11 +9,15 @@ import SwiftUI
 
 struct QuotationRowView: View {
     var quotation:QuotationModel
+    @State var buy:Double
+    @State var sell:Double
+    @State var ref:Double?
     
     var body: some View {
+        
         VStack(alignment: .leading){
             VStack{
-                if quotation.referencial_diario == nil{
+                if ref == nil{
                     Spacer()
                 }
                 
@@ -21,11 +25,11 @@ struct QuotationRowView: View {
                     Text("Compra:")
                         .foregroundColor(.white)
                     Spacer()
-                    Text(String(quotation.compra.formatDecimal()))
+                    Text(String(buy.formatDecimal()))
                         .foregroundColor(.white)
                 }.padding(8)
                 
-                if quotation.referencial_diario == nil{
+                if ref == nil{
                     Spacer()
                 }
                 
@@ -33,15 +37,15 @@ struct QuotationRowView: View {
                     Text("Venta:")
                         .foregroundColor(.white)
                     Spacer()
-                    Text(String(quotation.venta.formatDecimal()))
+                    Text(String(self.printtest().formatDecimal()))
                         .foregroundColor(.white)
                 }.padding(8)
                 
-                if quotation.referencial_diario == nil{
+                if ref == nil{
                     Spacer()
                 }
                 
-                if let refDaily = quotation.referencial_diario {
+                if let refDaily = ref {
                     HStack{
                         Text("Ref Día:")
                             .foregroundColor(.white)
@@ -62,10 +66,16 @@ struct QuotationRowView: View {
             .background(Rectangle().fill(Color(Colors.green_46B6AC)).shadow(radius: 8))
 
     }
+    
+    func printtest()-> Double{
+        print("imprime venta -> \(sell)")
+        
+        return sell
+    }
 }
 
 struct QuotationRowView_Previews: PreviewProvider {
     static var previews: some View {
-        QuotationRowView(quotation: QuotationModel(name: "Cambios dolar", compra: 5500, venta: 600, ref: nil))
+        QuotationRowView(quotation: QuotationModel(name: "Cambios dolar", compra: 5500, venta: 600, ref: nil),buy: 5500,sell: 5000,ref: nil)
     }
 }
