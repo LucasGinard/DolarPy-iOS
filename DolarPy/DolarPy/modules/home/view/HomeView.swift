@@ -9,16 +9,18 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var quotations = Array<QuotationModel>()
-    @State var amountInput: String = ""
     @State var lastUpdate: String = ""
+    
+    @State var amountInput: String = ""
     @FocusState var isInputActive: Bool
+    @State private var isEditing = false
 
     var body: some View {
         VStack(alignment: .center) {
             Text("💸 DolarPy 💸").padding()
             TextField("Monto", text: $amountInput)
                 .keyboardType(.numberPad)
-                .textFieldStyle(.roundedBorder).padding()
+                .textFieldStyle(CustomTextFieldStyleWithBorder(isEditing: isInputActive, lineWidth: 2, activeColor: .green, inactiveColor: .gray)).padding()
                 .focused($isInputActive)
                 .toolbar {
                     ToolbarItem(placement: .keyboard) {
@@ -37,7 +39,6 @@ struct HomeView: View {
         if amount == nil{
             return nil
         }
-
         return (Double(amountInput) ?? 1) * amount!
     }
     
