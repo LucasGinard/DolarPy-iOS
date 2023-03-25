@@ -16,7 +16,8 @@ extension Double{
         formatter.minimumFractionDigits = 0
         formatter.currencyCode = "PYG"
         formatter.numberStyle = .decimal
-        return formatter.string(for: self) ?? "?"
+        let input = formatter.string(for: self) ?? "?"
+        return input.replacingOccurrences(of: ",", with: ".")
     }
     
 }
@@ -48,4 +49,12 @@ extension UIColor {
         let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
         return String(format:"#%06x", rgb)
     }
+}
+
+extension String{
+    func getWidthOfString(_ text: String, font: UIFont) -> CGFloat {
+           let fontAttributes = [NSAttributedString.Key.font: font]
+           let size = (text as NSString).size(withAttributes: fontAttributes)
+           return size.width
+       }
 }
