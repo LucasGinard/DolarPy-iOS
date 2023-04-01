@@ -15,6 +15,8 @@ struct HomeView: View {
     @FocusState var isInputActive: Bool
     @State private var isEditing = false
     @State private var isLoading = true
+    @State var arrowOrientation: Angle = .zero
+    @State var selectedOption: String? = nil
 
 
     var body: some View {
@@ -31,6 +33,39 @@ struct HomeView: View {
                         }.padding([.trailing])
                     }
                 }
+            HStack {
+                Text(selectedOption ?? "Compra")
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .foregroundColor(.white)
+                    .frame(width: 100)
+                    .background(Color(Colors.green_46B6AC))
+                    .cornerRadius(16)
+                    .frame(width: 100)
+                .buttonStyle(PlainButtonStyle())
+                .contextMenu {
+                    Button(action: {
+                        selectedOption = "Compra"
+                    }) {
+                        Text("Compra")
+                    }
+                    Button(action: {
+                        selectedOption = "Venta"
+                    }) {
+                        Text("Venta")
+                    }
+                }
+
+                Button(action: {
+                    withAnimation {
+                        arrowOrientation += .degrees(180)
+                    }
+                }) {
+                    Image(systemName: "arrow.up")
+                        .foregroundColor(Color(Colors.green_46B6AC))
+                        .rotationEffect(arrowOrientation)
+                }
+            }
             self.QuotationsRowsView()
         }
         .padding()
@@ -59,7 +94,7 @@ struct HomeView: View {
                         let buy = self.calculateQuotation(amount: quotations[position].compra)!
                         let sell = self.calculateQuotation(amount: quotations[position].venta)!
                         let text1 = "Compra"
-                        let text2 = "\(sell)"
+                        let text2 = "\(buy)"
                             let font = Font.system(size: 16, weight: .regular)
                         
                         VStack(alignment: .leading){
