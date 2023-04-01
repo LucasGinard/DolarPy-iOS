@@ -34,6 +34,7 @@ struct HomeView: View {
                     }
                 }
             HStack {
+                Spacer()
                 Text(selectedOption ?? "Compra")
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
@@ -41,8 +42,6 @@ struct HomeView: View {
                     .frame(width: 100)
                     .background(Color(Colors.green_46B6AC))
                     .cornerRadius(16)
-                    .frame(width: 100)
-                .buttonStyle(PlainButtonStyle())
                 .contextMenu {
                     Button(action: {
                         selectedOption = "Compra"
