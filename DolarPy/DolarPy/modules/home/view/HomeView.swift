@@ -35,24 +35,26 @@ struct HomeView: View {
                 }
             HStack {
                 Spacer()
-                Text(selectedOption ?? "Compra")
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 8)
-                    .foregroundColor(.white)
-                    .frame(width: 100)
-                    .background(Color(Colors.green_46B6AC))
-                    .cornerRadius(16)
-                .contextMenu {
-                    Button(action: {
-                        selectedOption = "Compra"
-                    }) {
-                        Text("Compra")
-                    }
-                    Button(action: {
-                        selectedOption = "Venta"
-                    }) {
-                        Text("Venta")
-                    }
+                HStack(){
+                    Text(selectedOption ?? "Compra")
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .foregroundColor(.white)
+                        .frame(width: 100)
+                        .background(Color(Colors.green_46B6AC))
+                        .cornerRadius(16)
+                        .contextMenu {
+                            Button(action: {
+                                selectedOption = "Compra"
+                            }) {
+                                Text("Compra")
+                            }
+                            Button(action: {
+                                selectedOption = "Venta"
+                            }) {
+                                Text("Venta")
+                            }
+                        }
                 }
 
                 Button(action: {
@@ -63,7 +65,7 @@ struct HomeView: View {
                     Image(systemName: "arrow.up")
                         .foregroundColor(Color(Colors.green_46B6AC))
                         .rotationEffect(arrowOrientation)
-                }
+                }.padding(.trailing,18)
             }
             self.QuotationsRowsView()
         }
