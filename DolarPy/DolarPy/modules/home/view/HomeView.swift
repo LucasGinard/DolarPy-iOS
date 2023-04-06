@@ -15,8 +15,6 @@ struct HomeView: View {
     @State private var isEditing = false
     @State var arrowOrientation: Angle = .zero
     @State var selectedOption: String? = nil
-
-
     
     var body: some View {
         VStack(alignment: .center) {

@@ -23,6 +23,7 @@ class HomeViewModel:ObservableObject {
             decodedResponse?.dolarpy.values.forEach{
                 self.quotations.append($0)
             }
+            self.quotations = self.quotations.sortByBuy()
             isLoading = false
         }catch {
             isLoading = false

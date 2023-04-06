@@ -110,9 +110,9 @@
 		520FA5D3297B5DAB00065C58 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				523789B829DF5F330001D7EE /* viewModel */,
 				520FA5D5297B603000065C58 /* view */,
 				520FA5D4297B601E00065C58 /* model */,
-				523789B629DF58E60001D7EE /* HomeViewModel.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -139,6 +139,14 @@
 				52183D9729BD1229002EE903 /* CustomTextFieldStyleWithBorder.swift */,
 			);
 			path = components;
+			sourceTree = "<group>";
+		};
+		523789B829DF5F330001D7EE /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				523789B629DF58E60001D7EE /* HomeViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 		523F8D0C297CA8700054C35D /* utils */ = {

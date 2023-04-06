@@ -58,3 +58,15 @@ extension String{
            return size.width
        }
 }
+
+extension Array where Element == QuotationModel {
+    
+    func sortByBuy() -> [QuotationModel] {
+        return self.sorted { $0.compra > $1.compra }
+    }
+    
+    func sortBySell() -> [QuotationModel] {
+        return self.sorted { $0.venta > $1.venta }
+    }
+    
+}
