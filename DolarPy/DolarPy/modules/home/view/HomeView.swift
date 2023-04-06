@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var quotations = Array<QuotationModel>()
-    @State var lastUpdate: String = ""
+    @StateObject private var viewModel = HomeViewModel()
     
     @State var amountInput: String = ""
     @FocusState var isInputActive: Bool
     @State private var isEditing = false
-    @State private var isLoading = true
     @State var arrowOrientation: Angle = .zero
     @State var selectedOption: String? = nil
 
 
+    
     var body: some View {
         VStack(alignment: .center) {
             Text("💸 DolarPy 💸").padding()
@@ -86,14 +85,14 @@ struct HomeView: View {
             GridItem(.flexible()),
         ]
         return ScrollView {
-            if isLoading {
+            if viewModel.isLoading {
                 ProgressView()
             }else{
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(quotations.indices, id: \.self) { position in
-                        let ref = self.calculateQuotation(amount: quotations[position].referencial_diario) ?? nil
-                        let buy = self.calculateQuotation(amount: quotations[position].compra)!
-                        let sell = self.calculateQuotation(amount: quotations[position].venta)!
+                    ForEach(viewModel.quotations.indices, id: \.self) { position in
+                        let ref = self.calculateQuotation(amount: viewModel.quotations[position].referencial_diario) ?? nil
+                        let buy = self.calculateQuotation(amount: viewModel.quotations[position].compra)!
+                        let sell = self.calculateQuotation(amount: viewModel.quotations[position].venta)!
                         let text1 = "Compra"
                         let text2 = "\(buy)"
                             let font = Font.system(size: 16, weight: .regular)
@@ -155,7 +154,7 @@ struct HomeView: View {
                                 
                             }
                             VStack{
-                                if let name = quotations[position].name {
+                                if let name = viewModel.quotations[position].name {
                                     Text(name).foregroundColor(Color(Colors.green_46B6AC))
                                         .frame(maxWidth: .infinity,alignment: .leading).padding(8)
                                 }
@@ -165,27 +164,10 @@ struct HomeView: View {
                     }
                 }
                 .padding(.horizontal)
-                Text("Actualizado: \(lastUpdate)").padding()
+                Text("Actualizado: \(viewModel.lastUpdate)").padding()
             }
         }.task {
-            await self.getListQuotationService()
-        }
-    }
-    
-    func getListQuotationService() async{
-        do{
-            let (data, _) = try await URLSession.shared.data(from: URL(string:"https://dolar.melizeche.com/api/1.0/")!)
-
-            let decodedResponse = try? JSONDecoder().decode(QuotationResponse.self, from: data)
-            decodedResponse?.loadNamesQuotation()
-            lastUpdate = decodedResponse?.updated ?? ""
-            decodedResponse?.dolarpy.values.forEach{
-                self.quotations.append($0)
-            }
-            isLoading = false
-        }catch {
-            isLoading = false
-            print("Error service")
+            await self.viewModel.getListQuotationService()
         }
     }
     
