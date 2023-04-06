@@ -59,10 +59,10 @@ struct HomeView: View {
 
                 Button(action: {
                     withAnimation {
-                        arrowOrientation += .degrees(180)
+                        arrowOrientation = arrowOrientation == .zero ? .degrees(180) : .zero
                     }
                 }) {
-                    Image(systemName: "arrow.up")
+                    Image(systemName: "arrow.down")
                         .foregroundColor(Color(Colors.green_46B6AC))
                         .rotationEffect(arrowOrientation)
                 }.padding(.trailing,18)
