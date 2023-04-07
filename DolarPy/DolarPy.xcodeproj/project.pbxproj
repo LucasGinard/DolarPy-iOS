@@ -11,6 +11,7 @@
 		5213EEA92985CB3700E2D398 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5213EEA82985CB3700E2D398 /* Colors.swift */; };
 		52183D9829BD1229002EE903 /* CustomTextFieldStyleWithBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52183D9729BD1229002EE903 /* CustomTextFieldStyleWithBorder.swift */; };
 		523789B729DF58E60001D7EE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523789B629DF58E60001D7EE /* HomeViewModel.swift */; };
+		523789BA29DFB8FD0001D7EE /* OrderQuotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523789B929DFB8FD0001D7EE /* OrderQuotation.swift */; };
 		523F8D0B297C969E0054C35D /* QuotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F8D0A297C969E0054C35D /* QuotationModel.swift */; };
 		5242864E2964B67100327394 /* DolarPyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242864D2964B67100327394 /* DolarPyApp.swift */; };
 		524286502964B67100327394 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242864F2964B67100327394 /* ContentView.swift */; };
@@ -54,6 +55,7 @@
 		5213EEA82985CB3700E2D398 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		52183D9729BD1229002EE903 /* CustomTextFieldStyleWithBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldStyleWithBorder.swift; sourceTree = "<group>"; };
 		523789B629DF58E60001D7EE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		523789B929DFB8FD0001D7EE /* OrderQuotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQuotation.swift; sourceTree = "<group>"; };
 		523F8D0A297C969E0054C35D /* QuotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationModel.swift; sourceTree = "<group>"; };
 		5242864D2964B67100327394 /* DolarPyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyApp.swift; sourceTree = "<group>"; };
 		5242864F2964B67100327394 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				52183D9629BD1218002EE903 /* components */,
 				52672E84297DC8FC003DBA32 /* Extensions.swift */,
 				5213EEA82985CB3700E2D398 /* Colors.swift */,
+				523789B929DFB8FD0001D7EE /* OrderQuotation.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52DA7BEC29674CF600D85ABF /* AppDelegate.swift in Sources */,
+				523789BA29DFB8FD0001D7EE /* OrderQuotation.swift in Sources */,
 				523789B729DF58E60001D7EE /* HomeViewModel.swift in Sources */,
 				5213EEA92985CB3700E2D398 /* Colors.swift in Sources */,
 				52183D9829BD1229002EE903 /* CustomTextFieldStyleWithBorder.swift in Sources */,

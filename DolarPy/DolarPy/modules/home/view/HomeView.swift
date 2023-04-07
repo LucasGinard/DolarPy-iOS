@@ -13,8 +13,6 @@ struct HomeView: View {
     @State var amountInput: String = ""
     @FocusState var isInputActive: Bool
     @State private var isEditing = false
-    @State var arrowOrientation: Angle = .zero
-    @State var selectedOption: String? = nil
     
     var body: some View {
         VStack(alignment: .center) {
@@ -33,7 +31,7 @@ struct HomeView: View {
             HStack {
                 Spacer()
                 HStack(){
-                    Text(selectedOption ?? "Compra")
+                    Text(self.viewModel.selectedOption ?? "Compra")
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
                         .foregroundColor(.white)
@@ -42,12 +40,16 @@ struct HomeView: View {
                         .cornerRadius(16)
                         .contextMenu {
                             Button(action: {
-                                selectedOption = "Compra"
+                                self.viewModel.selectedOption = "Compra"
+                                self.viewModel.isOrderBy = .buy
+                                self.viewModel.orderQuotations()
                             }) {
                                 Text("Compra")
                             }
                             Button(action: {
-                                selectedOption = "Venta"
+                                self.viewModel.selectedOption = "Venta"
+                                self.viewModel.isOrderBy = .sell
+                                self.viewModel.orderQuotations()
                             }) {
                                 Text("Venta")
                             }
@@ -56,12 +58,13 @@ struct HomeView: View {
 
                 Button(action: {
                     withAnimation {
-                        arrowOrientation = arrowOrientation == .zero ? .degrees(180) : .zero
+                        self.viewModel.arrowOrientation = self.viewModel.arrowOrientation == .zero ? .degrees(180) : .zero
+                        self.viewModel.orderQuotations()
                     }
                 }) {
                     Image(systemName: "arrow.down")
                         .foregroundColor(Color(Colors.green_46B6AC))
-                        .rotationEffect(arrowOrientation)
+                        .rotationEffect(self.viewModel.arrowOrientation)
                 }.padding(.trailing,18)
             }
             self.QuotationsRowsView()

@@ -61,12 +61,22 @@ extension String{
 
 extension Array where Element == QuotationModel {
     
-    func sortByBuy() -> [QuotationModel] {
-        return self.sorted { $0.compra > $1.compra }
+    func sorted(by order: OrderQuotation) -> [QuotationModel] {
+        switch order {
+        case .buy:
+            return self.sorted(by: { $0.compra > $1.compra })
+        case .sell:
+            return self.sorted(by: { $0.venta > $1.venta })
+        }
     }
     
-    func sortBySell() -> [QuotationModel] {
-        return self.sorted { $0.venta > $1.venta }
+    func sortedDescending(by order: OrderQuotation) -> [QuotationModel] {
+        switch order {
+        case .buy:
+            return self.sorted(by: { $0.compra < $1.compra })
+        case .sell:
+            return self.sorted(by: { $0.venta < $1.venta })
+        }
     }
     
 }
