@@ -15,6 +15,6 @@ Versión iOS de 💸DolarPy💸: https://dolar.melizeche.com/
 
 ## Construido con 🛠️ (Build in)
 * [XCode](https://developer.apple.com/xcode/)
-* [Swift](https://kotlinlang.org) - Lenguaje/Language
+* [Swift](https://developer.apple.com/swift/) - Lenguaje/Language
 * [SwiftUI](https://developer.apple.com/xcode/swiftui/) - Framework
 * [MVVM](https://es.wikipedia.org/wiki/Modelo–vista–modelo_de_vista) - Arquitectura/Architecture 👷
