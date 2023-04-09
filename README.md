@@ -5,8 +5,6 @@
 
 ### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Huawei_AppGallery.svg/1200px-Huawei_AppGallery.svg.png" alt="drawing" width="20" height="20"/>AppGallery:[Aqui/Here](https://appgallery.huawei.com/#/app/C104598987?sharePrepath=ag&locale=es_US&source=appshare&subsource=C104598987)
 
-![](presentacion_readme/presentacionImg.png)
-
 🌐WebService: https://dolar.melizeche.com/api/1.0/
 
 Versión iOS de 💸DolarPy💸: https://dolar.melizeche.com/
