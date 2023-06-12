@@ -99,68 +99,54 @@ struct HomeView: View {
                             let font = Font.system(size: 16, weight: .regular)
                         
                         VStack(alignment: .leading){
-                            GeometryReader { geometry in
-                                let availableWidth = geometry.size.width
-                                let textSize1 = getTextSize(for: text1, with: font, bold: false) ?? .zero
-                                let textSize2 = getTextSize(for: text2, with: font, bold: false) ?? .zero
-                                
-                                Group {
-                                    if textSize1.width + textSize2.width > availableWidth {
-                                        returnViewH(buy: buy, sell: sell, ref: ref)
-
-                                    } else {
-                                        VStack{
-                                            if ref == nil{
-                                                Spacer()
-                                            }
-                                            
-                                            HStack{
-                                                Text("Compra:")
-                                                    .foregroundColor(.white)
-                                                Spacer()
-                                                Text(String(buy.formatDecimal()))
-                                                    .foregroundColor(.white)
-                                            }.padding(8)
-                                            
-                                            if ref == nil{
-                                                Spacer()
-                                            }
-                                            
-                                            HStack{
-                                                Text("Venta: ")
-                                                    .foregroundColor(.white)
-                                                Spacer()
-                                                Text(String(sell.formatDecimal()))
-                                                    .foregroundColor(.white)
-                                            }.padding(8)
-                                            
-                                            if ref == nil{
-                                                Spacer()
-                                            }
-                                            
-                                            if let refDaily = ref {
-                                                HStack{
-                                                    Text("Ref Día:")
-                                                        .foregroundColor(.white)
-                                                    Spacer()
-                                                    Text(String(refDaily)
-                                                    )
-                                                    .foregroundColor(.white)
-                                                }.padding(8)
-                                            }
-                                        }
-
-                                    }
+                            VStack{
+                                if ref == nil{
+                                    Spacer()
                                 }
                                 
+                                HStack{
+                                    Text("Compra:")
+                                        .foregroundColor(.white)
+                                    Spacer()
+                                    Text(String(buy.formatDecimal()))
+                                        .foregroundColor(.white)
+                                }.padding(8)
+                                
+                                if ref == nil{
+                                    Spacer()
+                                }
+                                
+                                HStack{
+                                    Text("Venta: ")
+                                        .foregroundColor(.white)
+                                    Spacer()
+                                    Text(String(sell.formatDecimal()))
+                                        .foregroundColor(.white)
+                                }.padding(8)
+                                
+                                if ref == nil{
+                                    Spacer()
+                                }
+                                
+                                if let refDaily = ref {
+                                    HStack{
+                                        Text("Ref Día:")
+                                            .foregroundColor(.white)
+                                        Spacer()
+                                        Text(String(refDaily)
+                                        )
+                                        .foregroundColor(.white)
+                                    }.padding(8)
+                                }
                             }
+
                             VStack{
                                 if let name = viewModel.quotations[position].name {
                                     Text(name).foregroundColor(Color(Colors.green_46B6AC))
                                         .frame(maxWidth: .infinity,alignment: .leading).padding(8)
                                 }
                             }.background(Color.white)
-                        }.frame(width: 160,height: 170)
+                        }.frame(width: 150,height: 160)
                             .background(Rectangle().fill(Color(Colors.green_46B6AC)).shadow(radius: 8))
                     }
                 }
