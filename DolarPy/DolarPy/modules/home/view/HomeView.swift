@@ -19,7 +19,7 @@ struct HomeView: View {
             Text("💸 DolarPy 💸").padding()
             TextField("Monto", text: $amountInput)
                 .keyboardType(.numberPad)
-                .textFieldStyle(CustomTextFieldStyleWithBorder(isEditing: isInputActive, lineWidth: 2, activeColor: .green, inactiveColor: .gray)).padding()
+                .textFieldStyle(CustomTextFieldStyleWithBorder(isEditing: isInputActive, lineWidth: 2, activeColor: Color(Colors.green_46B6AC), inactiveColor: .gray)).padding()
                 .focused($isInputActive)
                 .toolbar {
                     ToolbarItem(placement: .keyboard) {
@@ -158,13 +158,6 @@ struct HomeView: View {
         }
     }
     
-    
-    func getTextSize(for text: String, with font: Font, bold: Bool) -> CGSize? {
-        let uiFont = UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: bold ? .bold : .regular)
-            let attributedString = NSAttributedString(string: text, attributes: [.font: uiFont])
-            return attributedString.size()
-    }
-    
 }
 
 struct HomeView_Previews: PreviewProvider {
@@ -172,40 +165,4 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
     }
 }
-
-struct returnViewH: View{
-    var buy:Double,sell:Double,ref:Double?
-    var body: some View {
-        VStack{
-            VStack{
-                Text("Compra:")
-                    .foregroundColor(.white)
-                Spacer()
-                Text(String(buy.formatDecimal()))
-                    .foregroundColor(.white)
-            }.padding(8)
-            
-            VStack{
-                Text("Venta: ")
-                    .foregroundColor(.white)
-                Spacer()
-                Text(String(sell.formatDecimal()))
-                    .foregroundColor(.white)
-            }.padding(8)
-            
-            if let refDaily = ref {
-                VStack{
-                    Text("Ref Día:")
-                        .foregroundColor(.white)
-                    Text(String(refDaily)
-                    )
-                    .foregroundColor(.white)
-                }.padding(8)
-            }
-        }
-
-    }
-    
-}
-
 
