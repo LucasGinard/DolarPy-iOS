@@ -26,7 +26,9 @@ class HomeViewModel:ObservableObject {
             decodedResponse?.loadNamesQuotation()
             lastUpdate = decodedResponse?.updated ?? ""
             decodedResponse?.dolarpy.values.forEach{
-                self.quotations.append($0)
+                if $0.compra > 0 && $0.venta > 0  {
+                    self.quotations.append($0)
+                }
             }
             self.quotations = self.quotations.sortedDescending(by: .buy)
             isLoading = false
