@@ -17,13 +17,13 @@ struct CustomTextFieldStyleWithBorder: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding()
-            .background(Color.white)
+            .background(Color.clear)
             .cornerRadius(10)
             .shadow(radius: 5)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(isEditing ? activeColor : inactiveColor, lineWidth: lineWidth)
             )
-            .accentColor(.green)
+            .accentColor(Color(Colors.green_46B6AC))
     }
 }
