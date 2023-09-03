@@ -24,14 +24,18 @@ class HomeViewModel:ObservableObject {
 
             let decodedResponse = try? JSONDecoder().decode(QuotationResponse.self, from: data)
             decodedResponse?.loadNamesQuotation()
-            lastUpdate = decodedResponse?.updated ?? ""
-            decodedResponse?.dolarpy.values.forEach{
-                if $0.compra > 0 && $0.venta > 0  {
-                    self.quotations.append($0)
+            
+            DispatchQueue.main.async {
+                self.lastUpdate = decodedResponse?.updated ?? ""
+                decodedResponse?.dolarpy.values.forEach {
+                    if $0.compra > 0 && $0.venta > 0 {
+                        self.quotations.append($0)
+                    }
                 }
+                self.quotations = self.quotations.sortedDescending(by: .buy)
+                self.isLoading = false
             }
-            self.quotations = self.quotations.sortedDescending(by: .buy)
-            isLoading = false
+            
         }catch {
             isLoading = false
             print("Error service")
