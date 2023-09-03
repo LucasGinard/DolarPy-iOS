@@ -24,16 +24,23 @@ class HomeViewModel:ObservableObject {
 
             let decodedResponse = try? JSONDecoder().decode(QuotationResponse.self, from: data)
             decodedResponse?.loadNamesQuotation()
-            lastUpdate = decodedResponse?.updated ?? ""
-            decodedResponse?.dolarpy.values.forEach{
-                if $0.compra > 0 && $0.venta > 0  {
-                    self.quotations.append($0)
+            
+            DispatchQueue.main.async {
+                self.quotations.removeAll()
+                self.lastUpdate = decodedResponse?.updated ?? ""
+                decodedResponse?.dolarpy.values.forEach {
+                    if $0.compra > 0 && $0.venta > 0 {
+                        self.quotations.append($0)
+                    }
                 }
+                self.quotations = self.quotations.sortedDescending(by: .buy)
+                self.isLoading = false
             }
-            self.quotations = self.quotations.sortedDescending(by: .buy)
-            isLoading = false
+            
         }catch {
-            isLoading = false
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
             print("Error service")
         }
     }
@@ -46,5 +53,11 @@ class HomeViewModel:ObservableObject {
         self.quotations = isDescending ? self.quotations.sortedDescending(by: orderBy) : self.quotations.sorted(by: orderBy)
     }
     
+    func calculateQuotation(amount:Double?,amountInput:String)-> Double?{
+        if amount == nil{
+            return nil
+        }
+        return (Double(amountInput) ?? 1) * amount!
+    }
     
 }

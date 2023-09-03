@@ -14,9 +14,12 @@ struct HomeView: View {
     @FocusState var isInputActive: Bool
     @State private var isEditing = false
     
+    @State private var isCompraSelected: Bool = true
+
     var body: some View {
         VStack(alignment: .center) {
-            Text("💸 DolarPy 💸").padding()
+            Text("💸 DolarPy 💸")
+                .font(Font.title)
             TextField("Monto", text: $amountInput)
                 .keyboardType(.numberPad)
                 .textFieldStyle(CustomTextFieldStyleWithBorder(isEditing: isInputActive, lineWidth: 2, activeColor: Color(Colors.green_46B6AC), inactiveColor: .gray)).padding()
@@ -28,34 +31,53 @@ struct HomeView: View {
                         }.padding([.trailing])
                     }
                 }
+                .onChange(of: amountInput) { newValue in
+                    if newValue.count > 5 {
+                        amountInput = String(newValue.prefix(5))
+                    }
+                }
             HStack {
                 Spacer()
-                HStack(){
-                    Text(self.viewModel.selectedOption ?? "Compra")
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
-                        .foregroundColor(.white)
-                        .frame(width: 100)
-                        .background(Color(Colors.green_46B6AC))
-                        .cornerRadius(16)
-                        .contextMenu {
+                HStack(spacing: 0) {
                             Button(action: {
                                 self.viewModel.selectedOption = "Compra"
                                 self.viewModel.isOrderBy = .buy
                                 self.viewModel.orderQuotations()
+                                self.isCompraSelected = true
                             }) {
                                 Text("Compra")
+                                    .font(.headline)
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal, 10)
+                                    .foregroundColor(.white)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .fill(isCompraSelected ? Color(Colors.green_46B6AC) : Color.gray)
+                                    )
                             }
+
                             Button(action: {
                                 self.viewModel.selectedOption = "Venta"
                                 self.viewModel.isOrderBy = .sell
                                 self.viewModel.orderQuotations()
+                                self.isCompraSelected = false
                             }) {
                                 Text("Venta")
+                                    .font(.headline)
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal, 10)
+                                    .foregroundColor(.white)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .fill(!isCompraSelected ? Color(Colors.green_46B6AC) : Color.gray)
+                                    )
                             }
                         }
-                }
-
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color(Colors.green_46B6AC))
+                        )
+                
                 Button(action: {
                     withAnimation {
                         self.viewModel.arrowOrientation = self.viewModel.arrowOrientation == .zero ? .degrees(180) : .zero
@@ -73,13 +95,6 @@ struct HomeView: View {
         
     }
     
-    func calculateQuotation(amount:Double?)-> Double?{
-        if amount == nil{
-            return nil
-        }
-        return (Double(amountInput) ?? 1) * amount!
-    }
-    
     func QuotationsRowsView()-> some View{
         let columns = [
             GridItem(.fixed(160)),
@@ -91,12 +106,9 @@ struct HomeView: View {
             }else{
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(viewModel.quotations.indices, id: \.self) { position in
-                        let ref = self.calculateQuotation(amount: viewModel.quotations[position].referencial_diario) ?? nil
-                        let buy = self.calculateQuotation(amount: viewModel.quotations[position].compra)!
-                        let sell = self.calculateQuotation(amount: viewModel.quotations[position].venta)!
-                        let text1 = "Compra"
-                        let text2 = "\(buy)"
-                            let font = Font.system(size: 16, weight: .regular)
+                        let ref = self.viewModel.calculateQuotation(amount: viewModel.quotations[position].referencial_diario,amountInput: amountInput) ?? nil
+                        let buy = self.viewModel.calculateQuotation(amount: viewModel.quotations[position].compra,amountInput: amountInput)!
+                        let sell = self.viewModel.calculateQuotation(amount: viewModel.quotations[position].venta,amountInput: amountInput)!
                         
                         VStack(alignment: .leading){
                             VStack{
@@ -107,10 +119,16 @@ struct HomeView: View {
                                 HStack{
                                     Text("Compra:")
                                         .foregroundColor(.white)
+                                        .font(Font.system(size: 14, weight: .regular))
+                                        .lineLimit(1)
                                     Spacer()
                                     Text(String(buy.formatDecimal()))
                                         .foregroundColor(.white)
-                                }.padding(8)
+                                        .font(Font.system(size: 16, weight: .bold))
+                                        .lineLimit(1)
+                                }
+                                .minimumScaleFactor(0.1)
+                                .padding(8)
                                 
                                 if ref == nil{
                                     Spacer()
@@ -119,10 +137,16 @@ struct HomeView: View {
                                 HStack{
                                     Text("Venta: ")
                                         .foregroundColor(.white)
+                                        .font(Font.system(size: 14, weight: .regular))
+                                        .lineLimit(1)
                                     Spacer()
                                     Text(String(sell.formatDecimal()))
                                         .foregroundColor(.white)
-                                }.padding(8)
+                                        .font(Font.system(size: 16, weight: .bold))
+                                        .lineLimit(1)
+                                }
+                                .padding(8)
+                                .minimumScaleFactor(0.1)
                                 
                                 if ref == nil{
                                     Spacer()
@@ -132,11 +156,15 @@ struct HomeView: View {
                                     HStack{
                                         Text("Ref Día:")
                                             .foregroundColor(.white)
+                                            .font(Font.system(size: 14, weight: .regular))
                                         Spacer()
-                                        Text(String(refDaily)
-                                        )
-                                        .foregroundColor(.white)
-                                    }.padding(8)
+                                        Text(refDaily.formatDecimal())
+                                            .foregroundColor(.white)
+                                            .font(Font.system(size: 16, weight: .bold))
+                                            .lineLimit(1)
+                                    }
+                                    .padding(8)
+                                    .minimumScaleFactor(0.1)
                                 }
                             }
 
@@ -153,7 +181,11 @@ struct HomeView: View {
                 .padding(.horizontal)
                 Text("Actualizado: \(viewModel.lastUpdate)").padding()
             }
-        }.task {
+        }
+        .task {
+            await self.viewModel.getListQuotationService()
+        }
+        .refreshable {
             await self.viewModel.getListQuotationService()
         }
     }
