@@ -118,10 +118,16 @@ struct HomeView: View {
                                 HStack{
                                     Text("Compra:")
                                         .foregroundColor(.white)
+                                        .font(Font.system(size: 14, weight: .regular))
+                                        .lineLimit(1)
                                     Spacer()
                                     Text(String(buy.formatDecimal()))
                                         .foregroundColor(.white)
-                                }.padding(8)
+                                        .font(Font.system(size: 16, weight: .bold))
+                                        .lineLimit(1)
+                                }
+                                .minimumScaleFactor(0.1)
+                                .padding(8)
                                 
                                 if ref == nil{
                                     Spacer()
@@ -130,10 +136,16 @@ struct HomeView: View {
                                 HStack{
                                     Text("Venta: ")
                                         .foregroundColor(.white)
+                                        .font(Font.system(size: 14, weight: .regular))
+                                        .lineLimit(1)
                                     Spacer()
                                     Text(String(sell.formatDecimal()))
                                         .foregroundColor(.white)
-                                }.padding(8)
+                                        .font(Font.system(size: 16, weight: .bold))
+                                        .lineLimit(1)
+                                }
+                                .padding(8)
+                                .minimumScaleFactor(0.1)
                                 
                                 if ref == nil{
                                     Spacer()
@@ -143,11 +155,15 @@ struct HomeView: View {
                                     HStack{
                                         Text("Ref Día:")
                                             .foregroundColor(.white)
+                                            .font(Font.system(size: 14, weight: .regular))
                                         Spacer()
-                                        Text(String(refDaily)
-                                        )
-                                        .foregroundColor(.white)
-                                    }.padding(8)
+                                        Text(refDaily.formatDecimal())
+                                            .foregroundColor(.white)
+                                            .font(Font.system(size: 16, weight: .bold))
+                                            .lineLimit(1)
+                                    }
+                                    .padding(8)
+                                    .minimumScaleFactor(0.1)
                                 }
                             }
 
