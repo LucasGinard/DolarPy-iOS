@@ -14,9 +14,11 @@ struct HomeView: View {
     @FocusState var isInputActive: Bool
     @State private var isEditing = false
     
+    @State private var isCompraSelected: Bool = true
+
     var body: some View {
         VStack(alignment: .center) {
-            Text("💸 DolarPy 💸").padding()
+            Text("💸 DolarPy 💸")
             TextField("Monto", text: $amountInput)
                 .keyboardType(.numberPad)
                 .textFieldStyle(CustomTextFieldStyleWithBorder(isEditing: isInputActive, lineWidth: 2, activeColor: Color(Colors.green_46B6AC), inactiveColor: .gray)).padding()
@@ -28,34 +30,53 @@ struct HomeView: View {
                         }.padding([.trailing])
                     }
                 }
+                .onChange(of: amountInput) { newValue in
+                    if newValue.count > 5 {
+                        amountInput = String(newValue.prefix(5))
+                    }
+                }
             HStack {
                 Spacer()
-                HStack(){
-                    Text(self.viewModel.selectedOption ?? "Compra")
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
-                        .foregroundColor(.white)
-                        .frame(width: 100)
-                        .background(Color(Colors.green_46B6AC))
-                        .cornerRadius(16)
-                        .contextMenu {
+                HStack(spacing: 0) { // Agregamos spacing: 0 para que los botones estén pegados
                             Button(action: {
                                 self.viewModel.selectedOption = "Compra"
                                 self.viewModel.isOrderBy = .buy
                                 self.viewModel.orderQuotations()
+                                self.isCompraSelected = true
                             }) {
                                 Text("Compra")
+                                    .font(.headline)
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal, 10)
+                                    .foregroundColor(.white)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 16) // Sin bordes redondos en el medio
+                                            .fill(isCompraSelected ? Color(Colors.green_46B6AC) : Color.gray)
+                                    )
                             }
+
                             Button(action: {
                                 self.viewModel.selectedOption = "Venta"
                                 self.viewModel.isOrderBy = .sell
                                 self.viewModel.orderQuotations()
+                                self.isCompraSelected = false
                             }) {
                                 Text("Venta")
+                                    .font(.headline)
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal, 10)
+                                    .foregroundColor(.white)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 16) // Sin bordes redondos en el medio
+                                            .fill(!isCompraSelected ? Color(Colors.green_46B6AC) : Color.gray)
+                                    )
                             }
                         }
-                }
-
+                        .background(
+                            RoundedRectangle(cornerRadius: 16) // Esquinas redondeadas en los extremos
+                                .fill(Color(Colors.green_46B6AC))
+                        )
+                
                 Button(action: {
                     withAnimation {
                         self.viewModel.arrowOrientation = self.viewModel.arrowOrientation == .zero ? .degrees(180) : .zero
