@@ -37,7 +37,7 @@ struct HomeView: View {
                 }
             HStack {
                 Spacer()
-                HStack(spacing: 0) { // Agregamos spacing: 0 para que los botones estén pegados
+                HStack(spacing: 0) {
                             Button(action: {
                                 self.viewModel.selectedOption = "Compra"
                                 self.viewModel.isOrderBy = .buy
@@ -50,7 +50,7 @@ struct HomeView: View {
                                     .padding(.horizontal, 10)
                                     .foregroundColor(.white)
                                     .background(
-                                        RoundedRectangle(cornerRadius: 16) // Sin bordes redondos en el medio
+                                        RoundedRectangle(cornerRadius: 16)
                                             .fill(isCompraSelected ? Color(Colors.green_46B6AC) : Color.gray)
                                     )
                             }
@@ -67,13 +67,13 @@ struct HomeView: View {
                                     .padding(.horizontal, 10)
                                     .foregroundColor(.white)
                                     .background(
-                                        RoundedRectangle(cornerRadius: 16) // Sin bordes redondos en el medio
+                                        RoundedRectangle(cornerRadius: 16)
                                             .fill(!isCompraSelected ? Color(Colors.green_46B6AC) : Color.gray)
                                     )
                             }
                         }
                         .background(
-                            RoundedRectangle(cornerRadius: 16) // Esquinas redondeadas en los extremos
+                            RoundedRectangle(cornerRadius: 16)
                                 .fill(Color(Colors.green_46B6AC))
                         )
                 
@@ -94,13 +94,6 @@ struct HomeView: View {
         
     }
     
-    func calculateQuotation(amount:Double?)-> Double?{
-        if amount == nil{
-            return nil
-        }
-        return (Double(amountInput) ?? 1) * amount!
-    }
-    
     func QuotationsRowsView()-> some View{
         let columns = [
             GridItem(.fixed(160)),
@@ -112,12 +105,9 @@ struct HomeView: View {
             }else{
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(viewModel.quotations.indices, id: \.self) { position in
-                        let ref = self.calculateQuotation(amount: viewModel.quotations[position].referencial_diario) ?? nil
-                        let buy = self.calculateQuotation(amount: viewModel.quotations[position].compra)!
-                        let sell = self.calculateQuotation(amount: viewModel.quotations[position].venta)!
-                        let text1 = "Compra"
-                        let text2 = "\(buy)"
-                            let font = Font.system(size: 16, weight: .regular)
+                        let ref = self.viewModel.calculateQuotation(amount: viewModel.quotations[position].referencial_diario,amountInput: amountInput) ?? nil
+                        let buy = self.viewModel.calculateQuotation(amount: viewModel.quotations[position].compra,amountInput: amountInput)!
+                        let sell = self.viewModel.calculateQuotation(amount: viewModel.quotations[position].venta,amountInput: amountInput)!
                         
                         VStack(alignment: .leading){
                             VStack{
@@ -174,7 +164,11 @@ struct HomeView: View {
                 .padding(.horizontal)
                 Text("Actualizado: \(viewModel.lastUpdate)").padding()
             }
-        }.task {
+        }
+        .task {
+            await self.viewModel.getListQuotationService()
+        }
+        .refreshable {
             await self.viewModel.getListQuotationService()
         }
     }
