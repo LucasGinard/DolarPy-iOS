@@ -19,6 +19,7 @@ struct HomeView: View {
     var body: some View {
         VStack(alignment: .center) {
             Text("💸 DolarPy 💸")
+                .font(Font.title)
             TextField("Monto", text: $amountInput)
                 .keyboardType(.numberPad)
                 .textFieldStyle(CustomTextFieldStyleWithBorder(isEditing: isInputActive, lineWidth: 2, activeColor: Color(Colors.green_46B6AC), inactiveColor: .gray)).padding()
