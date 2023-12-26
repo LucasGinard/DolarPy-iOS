@@ -20,6 +20,7 @@
 		524286602964B67300327394 /* DolarPyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242865F2964B67300327394 /* DolarPyTests.swift */; };
 		5242866A2964B67300327394 /* DolarPyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524286692964B67300327394 /* DolarPyUITests.swift */; };
 		5242866C2964B67300327394 /* DolarPyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242866B2964B67300327394 /* DolarPyUITestsLaunchTests.swift */; };
+		526369DC2AECABA40059622A /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526369DB2AECABA40059622A /* HomeViewModelTest.swift */; };
 		52672E85297DC8FC003DBA32 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52672E84297DC8FC003DBA32 /* Extensions.swift */; };
 		52DA7BDF2967480200D85ABF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DA7BDE2967480200D85ABF /* GoogleService-Info.plist */; };
 		52DA7BE22967495D00D85ABF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 52DA7BE12967495D00D85ABF /* FirebaseAnalytics */; };
@@ -65,6 +66,7 @@
 		5242865F2964B67300327394 /* DolarPyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyTests.swift; sourceTree = "<group>"; };
 		524286692964B67300327394 /* DolarPyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyUITests.swift; sourceTree = "<group>"; };
 		5242866B2964B67300327394 /* DolarPyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DolarPyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		526369DB2AECABA40059622A /* HomeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
 		52672E84297DC8FC003DBA32 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		52DA7BDE2967480200D85ABF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52DA7BEB29674CF600D85ABF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		5242865E2964B67300327394 /* DolarPyTests */ = {
 			isa = PBXGroup;
 			children = (
+				526369D62AECA77B0059622A /* home */,
 				5242865F2964B67300327394 /* DolarPyTests.swift */,
 			);
 			path = DolarPyTests;
@@ -212,6 +215,14 @@
 				5242866B2964B67300327394 /* DolarPyUITestsLaunchTests.swift */,
 			);
 			path = DolarPyUITests;
+			sourceTree = "<group>";
+		};
+		526369D62AECA77B0059622A /* home */ = {
+			isa = PBXGroup;
+			children = (
+				526369DB2AECABA40059622A /* HomeViewModelTest.swift */,
+			);
+			path = home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				524286602964B67300327394 /* DolarPyTests.swift in Sources */,
+				526369DC2AECABA40059622A /* HomeViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,7 +621,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DolarPy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DolarPy";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DolarPy.app/DolarPy";
 			};
 			name = Debug;
 		};
@@ -632,7 +644,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DolarPy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DolarPy";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DolarPy.app/DolarPy";
 			};
 			name = Release;
 		};
